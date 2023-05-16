@@ -11,7 +11,7 @@ using namespace std;
 
 namespace ariel
 {
-    class Team : public Character
+    class Team 
     {
     protected:
         Character *leader;
@@ -29,7 +29,7 @@ namespace ariel
         void add (Character *player);
         void attack(Team *enemy);
         int stillAlive();
-        virtual string print() override;
+        virtual void print() ;
         //void virtual trans(Team *team);
         
 
@@ -46,7 +46,7 @@ namespace ariel
     public:
         Team2(Character *leader);
         //~Team2();
-        virtual string print() override;
+        void print() override;
         
 
     };
@@ -60,7 +60,7 @@ namespace ariel
     public:
         SmartTeam(Character *leader);
         //~SmartTeam();
-        virtual string print() override;
+        void print() override;
         
 
 

@@ -17,14 +17,14 @@ namespace ariel
     void Team::add (Character *player){
         if(team.size()< 10)
         {
-            // if(typeid(player) == typeid(Ninja))
-            // {
-            //     Ninja_team.push_back(player);
-            // }
-            // if(typeid(player) == typeid(Cowboy))
-            // {
-            //     Cowboy_team.push_back(player);
-            // }
+            if(Ninja *n = dynamic_cast<Ninja*>(player))
+            {
+                Ninja_team.push_back(n);
+            }
+            if(Cowboy *c = dynamic_cast<Cowboy*>(player))
+            {
+                Cowboy_team.push_back(c);
+            }
             team.push_back(player);
             team_counter++;
         } 
@@ -40,15 +40,13 @@ namespace ariel
     {
         return team_counter;
     }
-    string Team::print()
+    void Team::print() 
     {   
-        for (auto c : Cowboy_team){
-            return "--C--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+        for (auto c : Cowboy_team)
+            cout <<"--C--name: " << c->getName() << "\npoints: " << to_string(c->getPoints()) << "\nlocation: " << c->getLocation().print() << "\n"<< endl;
         for (auto n : Ninja_team)  
-            return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
-
-        }
-            
+            cout << "--N--name: " << n->getName()+ "\npoints: " << to_string(n->getPoints()) << "\nlocation: " << n->getLocation().print() << "\n" << endl;
+ 
     }
     //void Team::trans(Team *team){}
         
@@ -57,14 +55,14 @@ namespace ariel
                 
         }
         //Team2::~Team2(){}
-        string Team2::print(){
-              for(auto p : team)
-              {
-                if(typeid(p) == typeid(Ninja))
-                    return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
-                if(typeid(p) == typeid(Cowboy))
-                    return "--C--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
-              }
+        void Team2::print(){
+            //   for(auto p : team)
+            //   {
+            //     if(typeid(p) == typeid(Ninja))
+            //         return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+            //     if(typeid(p) == typeid(Cowboy))
+            //         return "--C--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+            //   }
 
         }
 
@@ -77,7 +75,7 @@ namespace ariel
 
         }
         //SmartTeam::~SmartTeam(){}
-        string SmartTeam::print(){
+        void SmartTeam::print(){
           
         }
         

@@ -20,12 +20,12 @@ namespace ariel
     public:
         //vector<string> ListOfPlayers;
        Character();
-       Character(const string &name, const Point &place, int points);
+       Character(const string &name, const Point &place, unsigned int points);
        virtual ~Character();
        bool isAlive();
        int getPoints();
        double distance(Character &other);
-       void hit(int number);
+       void hit(unsigned int number);
        string getName();
        Point getLocation();
        string virtual print();

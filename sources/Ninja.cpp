@@ -7,7 +7,7 @@ namespace ariel
     
     
     
-    Ninja::Ninja(const string &nameN ,const Point &location)  :  Character(name,location,10)
+    Ninja::Ninja(const string &nameN ,const Point &location)  :  Character(nameN,location,10)
     {
 
         
@@ -29,7 +29,7 @@ namespace ariel
     string Ninja::print()
     {
         if (isAlive()) 
-        return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+        return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n" + "\nspeed:" + to_string(this->speed);
     return '(' + this->name + ')';  
     }
     OldNinja::OldNinja(const string &nameN ,const Point &location): Ninja(nameN,location)

@@ -10,8 +10,7 @@ namespace ariel
 
     }
     //another constractor
-    Character::Character(const string &name, const Point &location,  int points) : name(name), location(location),
-                                                                                points(points) 
+    Character::Character(const string &name, const Point &location,  unsigned int points) : name(name), location(location),points(points) 
     {
         
     }
@@ -30,15 +29,16 @@ namespace ariel
     //return the num of points
     int Character::getPoints()
     {
-        return this->points;
+        return (int)(this->points);
     }
     //return the distance from another player
     double Character::distance(Character &other)
     {   
         return this->location.distance(other.location);
     }
-    void Character::hit(int number)
-    {
+    void Character::hit(unsigned int number)
+    {   
+
         this->points -= number;
     }
     string Character::getName()
