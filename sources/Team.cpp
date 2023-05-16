@@ -1,0 +1,84 @@
+
+#include "Team.hpp"
+
+
+using namespace std;
+
+namespace ariel
+{
+
+      
+    Team::Team(Character *leader)
+    {
+        this->leader = leader;
+    }
+
+    //void Team::creat_team(){}
+    void Team::add (Character *player){
+        if(team.size()< 10)
+        {
+            // if(typeid(player) == typeid(Ninja))
+            // {
+            //     Ninja_team.push_back(player);
+            // }
+            // if(typeid(player) == typeid(Cowboy))
+            // {
+            //     Cowboy_team.push_back(player);
+            // }
+            team.push_back(player);
+            team_counter++;
+        } 
+        runtime_error(" The team is full");
+    }
+    void Team::attack(Team *enemy){
+        if(team_counter != 0){
+            --enemy->team_counter;
+        }
+
+    }
+    int Team::stillAlive()
+    {
+        return team_counter;
+    }
+    string Team::print()
+    {   
+        for (auto c : Cowboy_team){
+            return "--C--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+        for (auto n : Ninja_team)  
+            return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+
+        }
+            
+    }
+    //void Team::trans(Team *team){}
+        
+
+    Team2::Team2(Character *leader): Team(leader){
+                
+        }
+        //Team2::~Team2(){}
+        string Team2::print(){
+              for(auto p : team)
+              {
+                if(typeid(p) == typeid(Ninja))
+                    return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+                if(typeid(p) == typeid(Cowboy))
+                    return "--C--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n";
+              }
+
+        }
+
+
+       
+        
+  
+    SmartTeam::SmartTeam(Character *leader) : Team(leader)
+        {
+
+        }
+        //SmartTeam::~SmartTeam(){}
+        string SmartTeam::print(){
+          
+        }
+        
+};
