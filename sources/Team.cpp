@@ -30,7 +30,11 @@ namespace ariel
         } 
         runtime_error(" The team is full");
     }
-    void Team::attack(Team *enemy){
+    void Team::attack(Team *enemy){ //not finish
+        if(!enemy->leader->isAlive())
+        {
+            
+        }
         if(team_counter != 0){
             --enemy->team_counter;
         }
@@ -48,7 +52,7 @@ namespace ariel
             cout << "--N--name: " << n->getName()+ "\npoints: " << to_string(n->getPoints()) << "\nlocation: " << n->getLocation().print() << "\n" << endl;
  
     }
-    //void Team::trans(Team *team){}
+    
         
 
     Team2::Team2(Character *leader): Team(leader){

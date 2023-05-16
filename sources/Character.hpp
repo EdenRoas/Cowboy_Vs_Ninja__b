@@ -24,7 +24,7 @@ namespace ariel
        virtual ~Character();
        bool isAlive();
        int getPoints();
-       double distance(Character &other);
+       double distance(Character *other);
        void hit(unsigned int number);
        string getName();
        Point getLocation();

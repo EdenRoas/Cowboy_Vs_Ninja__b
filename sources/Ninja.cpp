@@ -20,7 +20,7 @@ namespace ariel
     void Ninja::slash(Character *enemy)
     {   
         
-        if(isAlive() && this->distance(*enemy))
+        if(isAlive() && this->distance(enemy) < 1)
         {
             enemy->hit(40);
         }

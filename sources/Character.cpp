@@ -32,9 +32,9 @@ namespace ariel
         return (int)(this->points);
     }
     //return the distance from another player
-    double Character::distance(Character &other)
+    double Character::distance(Character *other)
     {   
-        return this->location.distance(other.location);
+        return this->location.distance(other->location);
     }
     void Character::hit(unsigned int number)
     {   
