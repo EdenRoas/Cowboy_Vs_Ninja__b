@@ -49,8 +49,10 @@ namespace ariel
                 __throw_runtime_error("The hit cannot be negative!!");
         this->points -= number;
         if(this->points <= 0)
+        {
             this->points = 0;
             this->is_play = false;
+        }
     }
     string Character::getName()
     {

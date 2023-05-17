@@ -26,8 +26,6 @@ namespace ariel
     public:
         Team();
         Team(Character *leader);
-        //~Team();
-        //void creat_team();
         void add (Character *player);
         Character* new_leader(Team *team);
         Character* new_target(Team *enemy);
