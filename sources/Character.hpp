@@ -13,19 +13,22 @@ namespace ariel
     class Character
     {
     protected:
+        bool is_play;
         Point location;
         string name;
-        unsigned int points; 
+        int points; 
        
     public:
         //vector<string> ListOfPlayers;
        Character();
-       Character(const string &name, const Point &place, unsigned int points);
+       Character(const string &name, const Point &place,int points);
        virtual ~Character();
+       void change();
        bool isAlive();
        int getPoints();
+       bool get_playing();
        double distance(Character *other);
-       void hit(unsigned int number);
+       void hit(int number);
        string getName();
        Point getLocation();
        string virtual print();

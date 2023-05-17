@@ -13,8 +13,7 @@ namespace ariel
     {
         if(isAlive() && NumOfBullets >= 0)
         {
-            int temp = enemy->getPoints();
-            temp -=10;
+            enemy->hit(10);
             this->NumOfBullets -=1;
         }
         return;

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include <limits>
 #include "Character.hpp"
 #include "Ninja.hpp"
 #include "Cowboy.hpp"
@@ -16,17 +17,20 @@ namespace ariel
     protected:
         Character *leader;
         //Character team[10];
-        vector<Character*> team;
+        vector<Character*> team_v;
         vector<Cowboy*> Cowboy_team;
         vector<Ninja*> Ninja_team;
         int team_counter;
 
        
     public:
+        Team();
         Team(Character *leader);
         //~Team();
         //void creat_team();
         void add (Character *player);
+        Character* new_leader(Team *team);
+        Character* new_target(Team *enemy);
         void attack(Team *enemy);
         int stillAlive();
         virtual void print() ;
@@ -44,6 +48,7 @@ namespace ariel
       
        
     public:
+        Team2() : Team(){}
         Team2(Character *leader);
         //~Team2();
         void print() override;

@@ -21,7 +21,7 @@ namespace ariel
         Point(double x_l , double y_r);
         //~Point();
         double distance(Point target);
-        string winner();
+        //string winner();
         string print();
         static Point moveTowards(Point start, Point finish ,double dis);
         

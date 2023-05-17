@@ -5,12 +5,12 @@ using namespace std;
 namespace ariel
 {
     //default constractor
-    Character::Character() : location(0,0), points(0)
+    Character::Character() : location(0,0), points(0), is_play(false)
     {
 
     }
     //another constractor
-    Character::Character(const string &name, const Point &location,  unsigned int points) : name(name), location(location),points(points) 
+    Character::Character(const string &name, const Point &location, int points) : name(name), location(location),points(points), is_play(false)
     {
         
     }
@@ -18,6 +18,9 @@ namespace ariel
     Character::~Character()
     {
 
+    }
+    void Character::change(){
+        this->is_play = true;
     }
     //check if the player still alive
     bool Character::isAlive()
@@ -31,15 +34,23 @@ namespace ariel
     {
         return (int)(this->points);
     }
+    bool Character::get_playing()
+    {
+        return this->is_play;
+    }
     //return the distance from another player
     double Character::distance(Character *other)
     {   
         return this->location.distance(other->location);
     }
-    void Character::hit(unsigned int number)
+    void Character::hit(int number)
     {   
-
+        if(number < 0 )
+                __throw_runtime_error("The hit cannot be negative!!");
         this->points -= number;
+        if(this->points <= 0)
+            this->points = 0;
+            this->is_play = false;
     }
     string Character::getName()
     {
