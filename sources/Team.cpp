@@ -43,13 +43,15 @@ namespace ariel
         Character *temp_ch = team->team_v[0];
         for (size_t i = 0; i < team->team_v.size(); i++)
         {
-            double temp = team->leader->distance(team->team_v[i]);
-            if (temp < closest)
+            if(team->team_v[i]->isAlive())
             {
-                closest = temp; 
-                temp_ch = team->team_v[i];
+                double temp = team->leader->distance(team->team_v[i]);
+                if (temp < closest)
+                {
+                    closest = temp; 
+                    temp_ch = team->team_v[i];
+                }
             }
-
         }
         
         return temp_ch;
@@ -59,40 +61,51 @@ namespace ariel
         Character *temp_en = enemy->team_v[0];
         for (size_t i = 0; i < enemy->team_v.size(); i++)
         {
-            double temp = this->leader->distance(enemy->team_v[i]);
-            if (temp < closest)
+            if(enemy->team_v[i]->isAlive())
             {
-                closest = temp; 
-                temp_en = enemy->team_v[i];
+                double temp = this->leader->distance(enemy->team_v[i]);
+                if (temp < closest)
+                {
+                    closest = temp; 
+                    temp_en = enemy->team_v[i];
+                }
             }
         }
         return temp_en;
 
     }
     void Team::attack(Team *enemy){ //not finish
+        if(enemy==nullptr){__throw_invalid_argument("Enemy is NULL");}
+        if(enemy->stillAlive()==0){__throw_runtime_error("Dead enemy team");}
         if(!this->leader->isAlive())
         {
             this->leader = new_leader(this);
         }
-        Character *enemy_target = enemy->leader;
-        enemy_target = new_target(enemy);
-        while(this->stillAlive())
+        Character *enemy_target = new_target(enemy);
+        //enemy_target = new_target(enemy);
+        if(this->stillAlive())
         {
             for (size_t i = 0; i < this->Cowboy_team.size(); i++)
             {
-                if(this->Cowboy_team[i]->hasboolets()){
-                    this->Cowboy_team[i]->shoot(enemy_target);}
-                else {
-                    this->Cowboy_team[i]->reload();
+                if(enemy_target->isAlive())
+                {
+                    if(this->Cowboy_team[i]->hasboolets()){
+                        this->Cowboy_team[i]->shoot(enemy_target);}
+                    else {
+                        this->Cowboy_team[i]->reload();
+                    }
                 }
             }
             for (size_t j = 0; j < Ninja_team.size(); j++)
             {
-                if(this->Ninja_team[j]->distance(enemy_target) < 1){
-                    Ninja_team[j]->slash(enemy_target);
+                if(enemy_target->isAlive())
+                {
+                    if(this->Ninja_team[j]->distance(enemy_target) < 1){
+                        Ninja_team[j]->slash(enemy_target);
+                    }
+                    else 
+                        Ninja_team[j]->move(enemy_target);
                 }
-                else 
-                    Ninja_team[j]->move(enemy_target);
             }
             if(!enemy_target->isAlive())
             {

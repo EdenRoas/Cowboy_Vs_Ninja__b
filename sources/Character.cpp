@@ -46,7 +46,7 @@ namespace ariel
     void Character::hit(int number)
     {   
         if(number < 0 )
-                __throw_runtime_error("The hit cannot be negative!!");
+                __throw_invalid_argument("The hit cannot be negative!!");
         this->points -= number;
         if(this->points <= 0)
         {

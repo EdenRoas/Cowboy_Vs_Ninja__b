@@ -11,11 +11,11 @@ namespace ariel
     {
     protected:
        int speed;
-       int flag; // to know which type the ninja
+       //int flag; // to know which type the ninja
        //string name;
     public:
         
-        Ninja(const string &nameN ,const Point &location);
+        Ninja(const string &nameN ,const Point &location, int life, int speed);
         void move(Character *enemy);
         void slash(Character *enemy);
         virtual string print();

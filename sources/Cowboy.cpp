@@ -11,12 +11,18 @@ namespace ariel
     }
     void Cowboy::shoot(Character *enemy)
     {
-        if(isAlive() && NumOfBullets >= 0)
+        if(this==enemy){__throw_runtime_error("Self Damage");}
+        if(!enemy->isAlive()){__throw_runtime_error("Enemy is dead1");}
+        if(isAlive())
         {
-            enemy->hit(10);
-            this->NumOfBullets -=1;
+            if(this->hasboolets())
+            {
+                enemy->hit(10);
+                this->NumOfBullets -=1;
+            }
         }
-        return;
+        else
+            __throw_runtime_error("The cowboy is dead!");
     }
     bool Cowboy::hasboolets()
     {   
@@ -26,7 +32,8 @@ namespace ariel
     }
     void Cowboy::reload()
     {
-        this->NumOfBullets += 6;
+        if(!this->isAlive()){__throw_runtime_error("Dead cowboy can't reload");}
+        this->NumOfBullets = 6;
     }
     string Cowboy::print()
     {

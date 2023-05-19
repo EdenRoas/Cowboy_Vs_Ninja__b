@@ -21,7 +21,7 @@ namespace ariel
     public:
         //vector<string> ListOfPlayers;
        Character();
-       Character(const string &name, const Point &place,int points);
+       Character(const string &name, const Point &place, int points);
        virtual ~Character();
        void change();
        bool isAlive();

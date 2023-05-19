@@ -7,7 +7,7 @@ namespace ariel
     
     
     
-    Ninja::Ninja(const string &nameN ,const Point &location)  :  Character(nameN,location,10)
+    Ninja::Ninja(const string &nameN ,const Point &location, int life, int speed)  :  Character(nameN,location,life), speed(speed)
     {
 
         
@@ -15,16 +15,20 @@ namespace ariel
     
     void Ninja::move(Character *enemy)
     {
-        this->location.moveTowards(this->location,enemy->getLocation(),this->speed);
+        this->location=this->location.moveTowards(this->location,enemy->getLocation(),this->speed);
     }
     void Ninja::slash(Character *enemy)
-    {   
+    {
+        if(this==enemy){__throw_runtime_error("Self Damage");}   
+        if (!enemy->isAlive()){__throw_runtime_error("The enemy is dead2");}
         
-        if(isAlive() && this->distance(enemy) < 1)
+        if(isAlive())
         {
-            enemy->hit(40);
+            if(this->distance(enemy) < 1){enemy->hit(40);}            
         }
-        return;
+        
+        else
+            __throw_runtime_error("The ninja is dead");
     }
     string Ninja::print()
     {
@@ -32,17 +36,17 @@ namespace ariel
         return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n" + "\nspeed:" + to_string(this->speed);
     return '(' + this->name + ')';  
     }
-    OldNinja::OldNinja(const string &nameN ,const Point &location): Ninja(nameN,location)
+    OldNinja::OldNinja(const string &nameN ,const Point &location) : Ninja(nameN,location,150,8)
     {
            
     }
     
 
-    YoungNinja::YoungNinja(const string &nameN, const Point &location) : Ninja(nameN,location)
+    YoungNinja::YoungNinja(const string &nameN ,const Point &location) :  Ninja(nameN,location,100,14)
     {
     }
    
-    TrainedNinja::TrainedNinja(const string &nameN, const Point &location) :Ninja(nameN,location)
+    TrainedNinja::TrainedNinja(const string &nameN ,const Point &location) :  Ninja(nameN,location,120,12)
     {
     }
     
