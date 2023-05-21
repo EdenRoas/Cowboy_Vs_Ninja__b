@@ -37,9 +37,13 @@ namespace ariel
     }
     string Cowboy::print()
     {
-        if (isAlive()) 
-        return "--C--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\nNumOfBullets" + to_string(this->NumOfBullets) + "\n";
-    return '(' + this->name + ')';  
+        if (!isAlive()) {
+        return "--C--\nname: (" + name + ")\npos: " + location.print() + "\nBullets: " +
+               to_string(NumOfBullets) + "\n";
+    } else {
+        return "--C--\nname: " + name + "\nhitPoint: " + to_string(points) + "\npos: " + location.print() + "\nBullets: " +
+               to_string(NumOfBullets) + "\n";
+    } 
     }   
         
  

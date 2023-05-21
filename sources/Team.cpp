@@ -138,11 +138,9 @@ namespace ariel
     }
     void Team::print() 
     {   
-        for (auto c : Cowboy_team)
-            cout <<"--C--name: " << c->getName() << "\npoints: " << to_string(c->getPoints()) << "\nlocation: " << c->getLocation().print() << "\n"<< endl;
-        for (auto n : Ninja_team)  
-            cout << "--N--name: " << n->getName()+ "\npoints: " << to_string(n->getPoints()) << "\nlocation: " << n->getLocation().print() << "\n" << endl;
- 
+        for (auto i : team_v)
+            cout << i->print() << "\n"<< endl;
+        
     }
     
         

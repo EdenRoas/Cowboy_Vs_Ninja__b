@@ -32,9 +32,15 @@ namespace ariel
     }
     string Ninja::print()
     {
-        if (isAlive()) 
-        return "--N--name: " + this->name+ "\npoints: " + to_string(this->points) + "\nlocation: " + this->location.print() + "\n" + "\nspeed:" + to_string(this->speed);
-    return '(' + this->name + ')';  
+        if (!isAlive()) 
+        {
+        return "--N--\nname: (" + name + ")\npos: " + location.print() + "\nSpeed: " +
+               to_string(speed) + "\n";
+        }   
+        else {
+        return "--N--\nname: " + name + "\nhitPoint: " + to_string(points) + "\npos: " + location.print() + "\nSpeed: " +
+               to_string(speed) + "\n";
+            }
     }
     OldNinja::OldNinja(const string &nameN ,const Point &location) : Ninja(nameN,location,150,8)
     {
