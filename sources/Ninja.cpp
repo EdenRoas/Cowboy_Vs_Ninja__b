@@ -24,7 +24,7 @@ namespace ariel
         
         if(isAlive())
         {
-            if(this->distance(enemy) < 1){enemy->hit(40);}            
+            if(this->distance(enemy) <= 1){enemy->hit(40);}            
         }
         
         else

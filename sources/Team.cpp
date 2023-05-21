@@ -95,22 +95,32 @@ namespace ariel
                         this->Cowboy_team[i]->reload();
                     }
                 }
+                else if(!enemy->stillAlive())
+                {
+                    enemy_target = new_target(enemy);
+
+                }
             }
             for (size_t j = 0; j < Ninja_team.size(); j++)
             {
                 if(enemy_target->isAlive())
                 {
-                    if(this->Ninja_team[j]->distance(enemy_target) < 1){
+                    if(this->Ninja_team[j]->distance(enemy_target) <= 1){
                         Ninja_team[j]->slash(enemy_target);
                     }
                     else 
                         Ninja_team[j]->move(enemy_target);
                 }
+                else if(!enemy->stillAlive())
+                {
+                    enemy_target = new_target(enemy);
+
+                }
             }
-            if(!enemy_target->isAlive())
-            {
-                enemy_target = new_target(enemy);
-            }
+            // if(!enemy_target->isAlive())
+            // {
+            //     enemy_target = new_target(enemy);
+            // }
             
         }
 
