@@ -25,7 +25,7 @@ namespace ariel
     //check if the player still alive
     bool Character::isAlive()
     {
-        if (this->points == 0)
+        if (this->getPoints() < 1)
             return false;
         return true;
     }

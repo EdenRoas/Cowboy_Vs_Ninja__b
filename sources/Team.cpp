@@ -86,35 +86,49 @@ namespace ariel
         if(this->stillAlive())
         {
             for (size_t i = 0; i < this->Cowboy_team.size(); i++)
-            {
+            {   
+                if(!this->Cowboy_team[i]->isAlive())
+                {
+                    continue;
+                }
                 if(enemy_target->isAlive())
                 {
                     if(this->Cowboy_team[i]->hasboolets()){
-                        this->Cowboy_team[i]->shoot(enemy_target);}
+                        cout<<"Enemy hp = "<<enemy_target->getPoints()<<endl;
+
+                        this->Cowboy_team[i]->shoot(enemy_target);
+
+                        }
                     else {
                         this->Cowboy_team[i]->reload();
                     }
                 }
-                else if(!enemy->stillAlive())
+                if(enemy->stillAlive())
                 {
                     enemy_target = new_target(enemy);
-
                 }
             }
             for (size_t j = 0; j < Ninja_team.size(); j++)
             {
-                if(enemy_target->isAlive())
+                if(!this->Ninja_team[j]->isAlive())
                 {
-                    if(this->Ninja_team[j]->distance(enemy_target) <= 1){
+                    continue;
+                }
+                if(enemy_target->isAlive() )
+                {
+                    if(this->Ninja_team[j]->distance(enemy_target) < 1){
+                        cout<<"Enemy hp = "<<enemy_target->getPoints()<<endl;
                         Ninja_team[j]->slash(enemy_target);
                     }
                     else 
+                    {
                         Ninja_team[j]->move(enemy_target);
+                    }
                 }
-                else if(!enemy->stillAlive())
+                if(enemy->stillAlive())
                 {
                     enemy_target = new_target(enemy);
-
+                    
                 }
             }
             // if(!enemy_target->isAlive())
