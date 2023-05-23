@@ -71,13 +71,7 @@ namespace ariel
        
     public:
         SmartTeam(Character *leader);
-        //~SmartTeam();
-        void print() override;
-        void attack(Team *enemy) ;
-        
-
-
-       
+        //~SmartTeam();      
         
     };
 
