@@ -30,6 +30,10 @@ namespace ariel
         else
             __throw_runtime_error("The ninja is dead");
     }
+    int Ninja::getspeed()
+    {
+        return this->speed;
+    }
     string Ninja::print()
     {
         if (!isAlive()) 

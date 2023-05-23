@@ -9,7 +9,7 @@ namespace ariel
 {
     class Ninja : public Character
     {
-    protected:
+    private:
        int speed;
        //int flag; // to know which type the ninja
        //string name;
@@ -18,6 +18,7 @@ namespace ariel
         Ninja(const string &nameN ,const Point &location, int life, int speed);
         void move(Character *enemy);
         void slash(Character *enemy);
+        int getspeed();
         virtual string print();
     };
 
