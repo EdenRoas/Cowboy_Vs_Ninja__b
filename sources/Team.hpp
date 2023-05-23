@@ -14,13 +14,15 @@ namespace ariel
 {
     class Team 
     {
+    private:
+        int team_counter;
+    
     protected:
         Character *leader;
         //Character team[10];
         vector<Character*> team_v;
         vector<Cowboy*> Cowboy_team;
         vector<Ninja*> Ninja_team;
-        int team_counter;
 
        
     public:
