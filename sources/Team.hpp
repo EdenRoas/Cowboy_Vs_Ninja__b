@@ -26,6 +26,7 @@ namespace ariel
     public:
         Team();
         Team(Character *leader);
+        virtual ~Team();
         void add (Character *player);
         Character* new_leader(Team *team);
         Character* new_target(Team *enemy);
@@ -49,6 +50,7 @@ namespace ariel
         Team2() : Team(){}
         Team2(Character *leader);
         //~Team2();
+        void attack(Team *enemy);
         void print() override;
         
 
