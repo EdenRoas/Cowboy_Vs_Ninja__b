@@ -29,6 +29,11 @@ namespace ariel
         Team();
         Team(Character *leader);
         virtual ~Team();
+         Team(const Team &other); //copy
+        Team &operator=(const Team &other); //Copy assignment operator
+        Team(Team &&other) noexcept; //Move constructor
+        Team &operator=(Team &&other) noexcept; //Move assignment operator
+
         void add (Character *player);
         Character* new_leader(Team *team);
         Character* new_target(Team *enemy);
@@ -49,7 +54,7 @@ namespace ariel
       
        
     public:
-        Team2() : Team(){}
+        //Team2() : Team(){}
         Team2(Character *leader);
         //~Team2();
         void attack(Team *enemy);

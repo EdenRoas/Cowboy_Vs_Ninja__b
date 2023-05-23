@@ -19,7 +19,7 @@ namespace ariel
         void move(Character *enemy);
         void slash(Character *enemy);
         int getspeed();
-        virtual string print();
+        string print() override;
     };
 
     class OldNinja : public Ninja

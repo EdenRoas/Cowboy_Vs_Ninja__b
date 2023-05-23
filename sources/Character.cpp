@@ -14,6 +14,39 @@ namespace ariel
     {
         
     }
+    //copy constractor -> tidy demand
+    Character::Character(const Character &other) : location(other.location) {
+    this->name = other.name;
+    this->points = other.points;
+    this->is_play = other.is_play;
+}
+Character &Character::operator=(const Character &other) {
+    if (this != &other) {
+        this->name = other.name;
+        this->location = other.location;
+        this->points = other.points;
+        this->is_play = other.is_play;
+    }
+    return *this;
+}
+
+//Move constructor ->tidy demand it
+Character::Character(Character &&other) noexcept : location(move(other.location)) { 
+    this->name = move(other.name);
+    this->points = other.points;
+    this->is_play = other.is_play;
+}
+
+//Move assignment operator
+Character& Character::operator=(Character&& other) noexcept {
+if (this != &other) {
+    this->name = move(other.name);
+    this->location = move(other.location);
+    this->points = other.points;
+    this->is_play = other.is_play;
+}
+return *this;
+}
     //distructor
     Character::~Character()
     {

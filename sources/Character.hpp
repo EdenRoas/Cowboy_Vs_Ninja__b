@@ -16,26 +16,26 @@ namespace ariel
         bool is_play;
         Point location;
         string name;
-        int points; 
-       
+        int points;
+
     public:
-        //vector<string> ListOfPlayers;
-       Character();
-       Character(const string &name, const Point &place, int points);
-       virtual ~Character();
-       void change();
-       bool isAlive();
-       int getPoints();
-       bool get_playing();
-       double distance(Character *other);
-       void hit(int number);
-       string getName();
-       Point getLocation();
-       string virtual print();
-
-
-       
-        
+        // vector<string> ListOfPlayers;
+        Character();
+        Character(const Character &other);
+        Character &operator=(const Character &other);     // Copy assignment operator
+        Character(Character &&other) noexcept;            // Move constructor
+        Character &operator=(Character &&other) noexcept; // Move assignment operator
+        Character(const string &name, const Point &place, int points);
+        virtual ~Character();
+        void change();
+        bool isAlive();
+        int getPoints();
+        bool get_playing();
+        double distance(Character *other);
+        void hit(int number);
+        string getName();
+        Point getLocation();
+        string virtual print();
     };
 
 }

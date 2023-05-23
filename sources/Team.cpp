@@ -14,6 +14,38 @@ namespace ariel
         this->leader = lead;
         this->add(lead);
     }
+    //Copy assignment operator
+    Team &Team::operator=(const Team &other) {
+    if (this != &other) {
+        this->leader = other.leader;
+        for (Character *c : other.team_v) {
+            this->add(c);
+        }
+    }
+    return *this;
+}
+
+//Move constructor
+Team::Team(Team &&other) noexcept : leader(other.leader), team_v(move(other.team_v)) {
+    other.leader = nullptr;
+}
+
+//Move assignment operator
+Team &Team::operator=(Team &&other) noexcept {
+    if (this != &other) {
+        for (Character *c : team_v) {
+            delete c;
+        }
+        team_v.clear();
+
+        leader = other.leader;
+        team_v = move(other.team_v);
+        other.leader = nullptr;
+    }
+    return *this;
+}
+
+
 
     Team::~Team()
     {

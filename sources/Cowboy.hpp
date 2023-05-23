@@ -22,7 +22,7 @@ namespace ariel
     void shoot(Character *enemy);
     bool hasboolets();
     void reload();
-    virtual string print();
+    string print()override;
        
         
     };
