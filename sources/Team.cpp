@@ -159,7 +159,7 @@ Team &Team::operator=(Team &&other) noexcept {
                 {
                     if (this->Cowboy_team[i]->hasboolets())
                     {
-                        cout << "Enemy hp = " << enemy_target->getPoints() << endl;
+                        //cout << "Enemy hp = " << enemy_target->getPoints() << endl;
 
                         this->Cowboy_team[i]->shoot(enemy_target);
                     }
@@ -183,7 +183,7 @@ Team &Team::operator=(Team &&other) noexcept {
                 {
                     if (this->Ninja_team[j]->distance(enemy_target) < 1)
                     {
-                        cout << "Enemy hp = " << enemy_target->getPoints() << endl;
+                        //cout << "Enemy hp = " << enemy_target->getPoints() << endl;
                         Ninja_team[j]->slash(enemy_target);
                     }
                     else
