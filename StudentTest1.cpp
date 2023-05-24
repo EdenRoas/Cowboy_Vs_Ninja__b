@@ -220,22 +220,17 @@ TEST_SUITE("Battle related methods") {
                 cowboy->shoot(target);
             }
         };
-        cout<<target->print()<<endl;
+
         shoot(6);
-        cout<<target->print()<<endl;
         CHECK_FALSE(cowboy->hasboolets());
         CHECK_NOTHROW(cowboy->shoot(target)); // This should not damage the target
-        cout<<target->print()<<endl;
         cowboy->reload();
 
         shoot(2);
-        cout<<target->print()<<endl;
         cowboy->reload();
         shoot(6);
-        cout<<target->print()<<endl;
         CHECK(target->isAlive()); // Target should still be alive with 10 hit points if the cowboys damage is 10
         shoot(1);
-        cout<<target->print()<<endl;
         CHECK(target->isAlive()); // Reloading when the magazine isn't empty shouldn't result in more than 6 bullets, the previous shoot should have no effect
         cowboy->reload();
         shoot(1);
@@ -471,12 +466,8 @@ TEST_SUITE("Battle simulations") {
 	team2.add(cowboy3);
 
         CHECK_EQ(team2.stillAlive(), 7);
-        cout << "Befor Attack->";
-        team2.print();
+
         multi_attack(2, team, team2);
-        cout<<"******************1"<<endl;
-        team2.print();
-        cout<<team2.stillAlive()<<endl;
         CHECK_FALSE(young_ninja->isAlive()); // Young ninja should be dead
         CHECK((trained_ninja->isAlive() && old_ninja->isAlive() &&
                young_ninja2->isAlive())); // Everyone else should still be alive
@@ -493,19 +484,10 @@ TEST_SUITE("Battle simulations") {
         CHECK_FALSE(old_ninja->isAlive()); // Old ninja should be dead
         CHECK(!young_ninja2->isAlive());
 
-//        multi_attack(2, team, team2);
-        team.attack(&team2);
-        cout<<"******************2"<<endl;
-        team2.print();
-        cout<<team2.stillAlive()<<endl;
-        team.attack(&team2);
+        multi_attack(2, team, team2);
         CHECK_NOTHROW(team.attack(
                 &team2)); // The entire enemy team will be dead before every cowboy shoots, the attack should stop and not throw an exception
         CHECK_FALSE(young_ninja2->isAlive()); // Young ninja should be dead
-        cout<<"******************3"<<endl;
-        team2.print();
-        cout<<team2.stillAlive()<<endl;
-
         CHECK_THROWS_AS(team.attack(&team2), std::runtime_error); // Attacking a dead team should throw an exception
     }
 
@@ -670,8 +652,7 @@ TEST_SUITE("Battle simulations") {
             CHECK(((team.stillAlive() && !team2.stillAlive()) || (!team.stillAlive() && team2.stillAlive())));
         }
 
-        SUBCASE("Team2 vs Team2") 
-        {
+        SUBCASE("Team2 vs Team2") {
             Team2 team{random_char()};
             Team2 team2{random_char()};
             for (int i = 0; i < MAX_TEAM - 1; i++) {
